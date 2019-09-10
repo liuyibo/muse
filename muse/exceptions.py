@@ -1,0 +1,2 @@
+class MuseClientError(RuntimeError):
+    pass

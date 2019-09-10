@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "muse4ever"
+version = "0.17.0"
+authors = [
+    { name = "liuyibo", email = "liuyibo1994@qq.com" },
+    { name = "exzhawk", email = "exzhawk@exz.me" },
+]
+maintainers = [
+    { name = "liuyibo", email = "liuyibo1994@qq.com" },
+]
+description = "An ADB-powered framework for efficient Android command execution, device management, and job scheduling for developers and testers"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "loguru",
+    "requests",
+    "requests_toolbelt",
+    "humanize",
+]
+
+keywords = ["adb", "android", "command-execution", "device-management", "device-interaction", "server-client", "development-tools"]
+
+[project.optional-dependencies]
+server = [
+    "pymongo",
+    "flask",
+    "flask_cors",
+]
+
+[project.urls]
+Homepage = "https://github.com/liuyibo/muse"
+Issues = "https://github.com/liuyibo/muse/issues"
+
+[project.scripts]
+muse = "muse.cli:main"
+muse-client = "muse.cli:main"
+muse-server = "muse.server:run_server"
+muse-scheduler = "muse.scheduler:run_scheduler"
+
+[tool.hatch.build.targets.wheel]
+include = [
+  "/muse/*.py",
+]
